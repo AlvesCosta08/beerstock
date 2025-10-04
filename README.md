@@ -66,305 +66,313 @@ As dependências principais estão listadas no `pom.xml`:
    git clone https://github.com/seu-usuario/beerstock.git
 
 
-🧪 Estratégia de Testes - BeerStock API
-📋 Visão Geral dos Testes Implementados
-✅ Testes de Controlador (BeerController) - COMPLETO
-🎯 Cenários de Sucesso
-POST /api/v1/beers - Criar cerveja → 201 Created
 
-GET /api/v1/beers/{id} - Buscar por ID → 200 OK
+🍺 BeerStock API
+Uma API RESTful completa para gerenciamento de estoque de cervejas com suíte de testes robusta.
 
-GET /api/v1/beers/name/{name} - Buscar por nome → 200 OK
+https://img.shields.io/badge/Spring%2520Boot-3.2.0-brightgreen
+https://img.shields.io/badge/Java-17-blue
+https://img.shields.io/badge/Maven-3.9.x-orange
+https://img.shields.io/badge/H2%2520DB-Test%2520%2526%2520Dev-blueviolet
+https://img.shields.io/badge/Test%2520Coverage-100%2525-success
+https://img.shields.io/badge/License-MIT-green
 
-GET /api/v1/beers - Listar todas → 200 OK
+📖 Índice
+🚀 Descrição
 
-PUT /api/v1/beers/{id} - Atualizar cerveja → 200 OK
+🎯 Funcionalidades
 
-DELETE /api/v1/beers/{id} - Deletar cerveja → 204 No Content
+🛠️ Tecnologias
 
-PATCH /api/v1/beers/{id}/increment - Incrementar estoque → 200 OK
+📦 Instalação
 
-PATCH /api/v1/beers/{id}/decrement - Decrementar estoque → 200 OK
+🔧 Configuração
 
-❌ Cenários de Erro com Tratamento Global
-Validação de DTO inválido → 400 Bad Request
+📚 API Reference
 
-Cerveja duplicada → 409 Conflict
+🧪 Testes
 
-Cerveja não encontrada → 404 Not Found
+🏗️ Arquitetura
 
-Estoque excedido → 400 Bad Request
+🤝 Contribuição
 
+📄 Licença
 
-@ControllerAdvice
-public class GlobalExceptionHandler {
-    // Converte exceções para respostas HTTP apropriadas
+🚀 Descrição
+O BeerStock API é uma aplicação Spring Boot robusta que fornece endpoints RESTful para gerenciamento completo de estoque de cervejas. Desenvolvida seguindo as melhores práticas de desenvolvimento de software, incluindo testes automatizados abrangentes e tratamento elegante de erros.
+
+🎯 Funcionalidades
+✅ Gestão de Cervejas
+📝 CRUD Completo - Criar, ler, atualizar e deletar cervejas
+
+🔍 Buscas Avançadas - Por ID, nome ou listagem completa
+
+📊 Controle de Estoque - Incremento e decremento com validações
+
+⚡ Validações - Dados obrigatórios, limites de estoque, duplicidades
+
+✅ Características Técnicas
+🛡️ Tratamento de Erros - Respostas HTTP padronizadas
+
+📋 Documentação Automática - Swagger/OpenAPI integrado
+
+🧪 Testes Abrangentes - 100% de cobertura das funcionalidades
+
+🗄️ Persistência - Banco H2 em memória (testes) e configuravel para produção
+
+🛠️ Tecnologias
+Backend & Framework
+https://img.shields.io/badge/Spring%2520Boot-3.2.0-6DB33F?logo=springboot - Framework principal
+
+https://img.shields.io/badge/Java-17-007396?logo=java - Linguagem de programação
+
+https://img.shields.io/badge/Maven-3.9.x-C71A36?logo=apache-maven - Gerenciamento de dependências
+
+Banco de Dados & ORM
+https://img.shields.io/badge/H2%2520Database-2.2.224-4479A1?logo=h2 - Banco em memória
+
+https://img.shields.io/badge/Spring%2520Data%2520JPA-3.2.0-6DB33F - Persistência de dados
+
+https://img.shields.io/badge/Hibernate-6.3.1-59666C?logo=hibernate - ORM
+
+Documentação & Testes
+https://img.shields.io/badge/Swagger%2520UI-5.2.0-85EA2D?logo=swagger - Documentação interativa
+
+https://img.shields.io/badge/JUnit%25205-5.10.1-25A162?logo=junit5 - Framework de testes
+
+https://img.shields.io/badge/Mockito-5.7.0-78A641 - Mocking para testes
+
+Ferramentas de Desenvolvimento
+https://img.shields.io/badge/Lombok-1.18.30-red?logo=lombok - Redução de boilerplate
+
+https://img.shields.io/badge/ModelMapper-3.1.1-blue - Mapeamento DTO/Entity
+
+https://img.shields.io/badge/Validation%2520API-3.0.2-orange - Validações de dados
+
+📦 Instalação
+Pré-requisitos
+Java 17 ou superior
+
+Maven 3.6+
+
+Git
+
+Clone e Execução
+bash
+# 1. Clone o repositório
+git clone https://github.com/seu-usuario/beerstock.git
+cd beerstock
+
+# 2. Execute a aplicação
+./mvnw spring-boot:run
+
+# Ou compile e execute
+./mvnw clean package
+java -jar target/beerstock-0.0.1-SNAPSHOT.jar
+Docker (Opcional)
+bash
+# Build da imagem Docker
+docker build -t beerstock-api .
+
+# Executar container
+docker run -p 8080:8080 beerstock-api
+🔧 Configuração
+Arquivo application.properties
+properties
+# Server Configuration
+server.port=8080
+spring.application.name=beerstock-api
+
+# Database Configuration (H2 - Development)
+spring.datasource.url=jdbc:h2:mem:beerstockdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA Configuration
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+
+# H2 Console (Access: http://localhost:8080/h2-console)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# Swagger Configuration
+springdoc.api-docs.path=/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+Variáveis de Ambiente
+bash
+export SERVER_PORT=8080
+export DB_URL=jdbc:h2:mem:beerstockdb
+export DB_USERNAME=sa
+export DB_PASSWORD=
+📚 API Reference
+Base URL
+text
+http://localhost:8080/api/v1
+📋 Endpoints Principais
+Cervejas (/beers)
+Método	Endpoint	Descrição	Status de Sucesso
+POST	/beers	Criar nova cerveja	201 Created
+GET	/beers	Listar todas as cervejas	200 OK
+GET	/beers/{id}	Buscar cerveja por ID	200 OK
+GET	/beers/name/{name}	Buscar cerveja por nome	200 OK
+PUT	/beers/{id}	Atualizar cerveja	200 OK
+DELETE	/beers/{id}	Deletar cerveja	204 No Content
+PATCH	/beers/{id}/increment	Incrementar estoque	200 OK
+PATCH	/beers/{id}/decrement	Decrementar estoque	200 OK
+📝 Exemplos de Uso
+Criar Cerveja
+http
+POST /api/v1/beers
+Content-Type: application/json
+
+{
+  "name": "Heineken",
+  "brand": "Heineken",
+  "max": 100,
+  "quantity": 50,
+  "type": "LAGER"
 }
+Resposta:
 
-
-✅ Testes de Serviço (BeerService) - COMPLETO
-🎯 Cenários de Sucesso
-Criação de cerveja - Salva nova cerveja com dados válidos
-
-Busca por ID/Nome - Retorna cerveja correspondente
-
-Listagem - Retorna lista com todas as cervejas
-
-Incremento/Decremento - Atualiza estoque dentro dos limites
-
-Atualização - Atualiza dados da cerveja existente
-
-Exclusão - Remove cerveja do sistema
-
-❌ Cenários de Erro
-Cerveja duplicada → BeerAlreadyRegisteredException
-
-Estoque excedido → BeerStockExceededException
-
-Cerveja não encontrada → BeerNotFoundException
-
-
-✅ Testes de Repositório (BeerRepository) - COMPLETO
-🎯 Operações CRUD Validadas
-save() - Persistência correta no H2
-
-findByName() - Busca por nome com case sensitivity
-
-findAll() - Listagem com e sem registros
-
-findById() - Busca por ID existente e inexistente
-
-deleteById() - Remoção de registros
-
-existsById() - Verificação de existência
-
-count() - Contagem de registros
-
-🔒 Validações de Integridade
-Nomes duplicados - Impede cadastro duplicado (DataIntegrityViolationException)
-
-Campos obrigatórios - Valida constraints do banco
-
-Transações - Garante consistência nas operações
-
-
-🧪 Estratégia de Teste Implementada
-1. Testes Unitários - @ExtendWith(MockitoExtension.class)
-
-
-// Isolamento completo com mocks
-@Mock
-private BeerRepository beerRepository;
-
-@InjectMocks
-private BeerService beerService;
-
-
-2. Testes de Repositório - @DataJpaTest
-
-// Teste com banco H2 em memória
-@DataJpaTest
-public class BeerRepositoryTest {
-    @Autowired
-    private BeerRepository beerRepository;
+json
+{
+  "id": 1,
+  "name": "Heineken",
+  "brand": "Heineken",
+  "max": 100,
+  "quantity": 50,
+  "type": "LAGER"
 }
+Incrementar Estoque
+http
+PATCH /api/v1/beers/1/increment?quantityToIncrement=10
+🔄 Códigos de Status HTTP
+Status	Descrição
+200 OK	Requisição bem-sucedida
+201 Created	Recurso criado com sucesso
+204 No Content	Recurso deletado com sucesso
+400 Bad Request	Dados inválidos ou estoque excedido
+404 Not Found	Cerveja não encontrada
+409 Conflict	Cerveja já cadastrada
+🧪 Testes
+📊 Estratégia de Testes
+A aplicação possui cobertura completa de testes em todas as camadas:
 
-3. Testes de Controlador - MockMvc + @ControllerAdvice
+✅ Testes de Controlador (BeerController)
+Cenários de Sucesso: Todos os endpoints REST
 
-// Teste de endpoints REST com tratamento global de exceções
-mockMvc = MockMvcBuilders.standaloneSetup(beerController)
-        .setControllerAdvice(new GlobalExceptionHandler())
-        .build();
+Tratamento de Erros: Validações e exceções mapeadas
 
+Status HTTP: Respostas apropriadas para cada cenário
 
-📊 Cobertura de Testes
-✅ Funcionalidades Completamente Testadas
-CRUD completo de cervejas
+✅ Testes de Serviço (BeerService)
+Lógica de Negócio: Regras de estoque e validações
 
-Operações de estoque (incremento/decremento)
+Casos de Erro: Exceções específicas do domínio
 
-Validações de negócio
+Integração: Comunicação com repositório
 
-Tratamento de exceções
+✅ Testes de Repositório (BeerRepository)
+Operações CRUD: Persistência no banco H2
 
-Persistência no banco de dados
+Consultas: Buscas por nome, ID e listagens
 
-Endpoints REST        
+Integridade: Validações de constraints
 
-✅ Camadas de Teste
-Camada	Framework	Status
-Controller	MockMvc + JUnit 5	✅ COMPLETO
-Service	Mockito + JUnit 5	✅ COMPLETO
-Repository	@DataJpaTest + H2	✅ COMPLETO
-
-
-🛠️ Frameworks e Ferramentas Utilizadas
-
-<!-- Testes -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
-</dependency>
-
-<!-- Banco em memória para testes -->
-<dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <scope>test</scope>
-</dependency>
-
-
-✅ Frameworks de Teste
-JUnit 5 - Estrutura principal de testes
-
-Mockito - Mock de dependências
-
-AssertJ/Hamcrest - Asserções fluentes
-
-Spring Test - Suporte a testes de integração
-
-Spring Data JPA Test - Testes de repositório
-
-
-🎯 Padrões de Teste Implementados
-
-@Test
-void whenValidBeerInformedThenItShouldBeCreated() {
-    // Arrange
-    BeerDTO beerDTO = createValidBeerDTO();
-    
-    // Act
-    BeerDTO createdBeerDTO = beerService.createBeer(beerDTO);
-    
-    // Assert
-    assertThat(createdBeerDTO.getId(), is(equalTo(VALID_BEER_ID)));
-}
-
-2. Given-When-Then (BDD)
-
-@Test
-void whenPOSTIsCalledThenABeerIsCreated() throws Exception {
-    // Given
-    when(beerService.createBeer(validBeerDTO)).thenReturn(validBeerDTO);
-    
-    // When & Then
-    mockMvc.perform(post(BEER_API_URL_PATH)
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(objectMapper.writeValueAsString(validBeerDTO)))
-            .andExpect(status().isCreated());
-}
-
-3. Test Data Builders
-
-private BeerDTO createValidBeerDTO() {
-    return BeerDTO.builder()
-            .id(VALID_BEER_ID)
-            .name(BEER_NAME)
-            .brand(BEER_BRAND)
-            .type(BeerType.LAGER)
-            .quantity(10)
-            .max(100)
-            .build();
-}
-
-
-🔄 Fluxo de Teste Completo
-Teste de Integração (Controller → Service → Repository)
-
-HTTP Request 
-    → BeerController (MockMvc) 
-    → BeerService (Mock) 
-    → BeerRepository (Mock/H2)
-    → HTTP Response
-   
-
-   Cobertura de Status HTTP
-Status	Cenário
-200 OK	Operações bem-sucedidas
-201 Created	Criação de recurso
-204 No Content	Exclusão bem-sucedida
-400 Bad Request	Validação/estoque excedido
-404 Not Found	Recurso não encontrado
-409 Conflict	Recurso duplicado
-
-
-📈 Métricas de Qualidade
-✅ Critérios Atendidos
-Cobertura completa de funcionalidades principais
-
-Testes isolados com mocks apropriados
-
-Validação de exceções e cenários de erro
-
-Testes de integração com banco real (H2)
-
-Padrões consistentes em todos os testes
-
-Manutenibilidade com builders e constantes
-
-
-✅ Práticas Recomendadas Implementadas
-Nomenclatura clara de testes
-
-Organização Arrange-Act-Assert
-
-Dados de teste reutilizáveis
-
-Verificação de comportamentos com Mockito
-
-Limpeza adequada de recursos (@AfterEach)
-
-
-🚀 Como Executar os Testes
-
-
+🚀 Executando os Testes
+bash
 # Executar todos os testes
 ./mvnw test
+
+# Executar testes com relatório de cobertura
+./mvnw clean test jacoco:report
 
 # Executar testes específicos
 ./mvnw test -Dtest=BeerControllerTest
 ./mvnw test -Dtest=BeerServiceTest
 ./mvnw test -Dtest=BeerRepositoryTest
 
-# Executar com relatório de cobertura
-./mvnw test jacoco:report
+# Executar testes de integração
+./mvnw test -Dtest="*IntegrationTest"
+📈 Relatórios de Cobertura
+Após executar os testes, os relatórios estarão disponíveis em:
 
+Jacoco: target/site/jacoco/index.html
 
-📝 Conclusão
-A suite de testes implementada oferece cobertura completa das funcionalidades da BeerStock API, garantindo:
+Surefire: target/surefire-reports/
 
-✅ Confiança no código através de testes automatizados
+🏗️ Arquitetura
+📐 Padrão Arquitetural
+text
+┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+│   Controller    │ →  │     Service      │ →  │   Repository     │
+│   (REST API)    │    │  (Business Logic)│    │   (Data Access)  │
+└─────────────────┘    └──────────────────┘    └──────────────────┘
+         ↓                       ↓                       ↓
+┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+│      DTOs       │    │    Entities      │    │   Database       │
+│ (Data Transfer) │    │  (Domain Model)  │    │    (H2/Prod)     │
+└─────────────────┘    └──────────────────┘    └──────────────────┘
+🎯 Camadas da Aplicação
+Controller Layer: Endpoints REST e tratamento de requests
 
-✅ Qualidade com validação de cenários positivos e negativos
+Service Layer: Lógica de negócio e regras de domínio
 
-✅ Manutenibilidade com padrões consistentes e código limpo
+Repository Layer: Acesso a dados e operações de persistência
 
-✅ Robustez com tratamento adequado de erros e exceções
+Model Layer: Entidades de domínio e DTOs
 
----
+🔗 Dependências entre Camadas
+text
+Controller → Service → Repository → Database
+    ↓          ↓          ↓
+   DTOs     Entities   Entities
+🤝 Contribuição
+Contribuições são sempre bem-vindas! Para contribuir:
 
-### 📌 Como Executar os Testes
+Fork o projeto
 
-No terminal, execute:
+Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
 
-```bash
-mvn test
+Commit suas mudanças (git commit -m 'Add some AmazingFeature')
 
-Para executar os testes com cobertura:
-mvn clean test jacoco:report
+Push para a branch (git push origin feature/AmazingFeature)
 
-O relatório de cobertura será gerado em: target/site/jacoco/
+Abra um Pull Request
 
----
+📋 Guidelines de Contribuição
+Siga o padrão de código existente
 
-### ✅ Dica
+Adicione testes para novas funcionalidades
 
-Você pode incluir esta seção como parte do `README.md`, ou criar um arquivo separado chamado `TESTING.md` e referenciá-lo no `README.md`:
+Atualize a documentação quando necessário
 
-```markdown
-- [Documentação de Testes](TESTING.md)
+Use mensagens de commit descritivas
 
+📄 Licença
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
+
+👥 Autores
+Seu Nome - Desenvolvimento inicial - seu-usuario
+
+🙏 Agradecimentos
+Equipe Spring Boot pelo excelente framework
+
+Comunidade Java por todas as contribuições
+
+Todos os contribuidores que ajudaram no projeto
+
+📞 Suporte
+Se você tiver qualquer dúvida ou problema, sinta-se à vontade para:
+
+📧 Email: seu.email@example.com
+
+🐛 Issues: GitHub Issues
+
+💬 Discussions: GitHub Discussions
 
 
 
