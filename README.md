@@ -120,6 +120,8 @@ O BeerStock API é uma aplicação Spring Boot robusta que fornece endpoints RES
 
 🗄️ Persistência - Banco H2 em memória (testes) e configuravel para produção
 
+```
+
 🛠️ Tecnologias
 Backend & Framework
 https://img.shields.io/badge/Spring%2520Boot-3.2.0-6DB33F?logo=springboot - Framework principal
