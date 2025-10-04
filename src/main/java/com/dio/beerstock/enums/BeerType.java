@@ -2,8 +2,11 @@ package com.dio.beerstock.enums;
 
 public enum BeerType {
     LAGER,
-    MALZBIER,
+    PILSNER,
     IPA,
-    WEISS,
-    ALE
+    STOUT,
+    WHEAT,
+    PALE_ALE,
+    BROWN_ALE,
+    ALE, PORTER
 }

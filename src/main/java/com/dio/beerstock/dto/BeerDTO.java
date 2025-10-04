@@ -2,33 +2,36 @@ package com.dio.beerstock.dto;
 
 import com.dio.beerstock.enums.BeerType;
 import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class BeerDTO {
 
     private Long id;
 
-    @NotBlank
+    @NotNull
+    @Size(min = 1, max = 200)
     private String name;
 
-    @NotBlank
+    @NotNull
+    @Size(min = 1, max = 200)
     private String brand;
 
     @NotNull
-    @Min(1)
-    private int max;
+    @Max(500)
+    private Integer max;
 
     @NotNull
-    @Min(0)
-    private int quantity; // ⚠️ Aqui usamos "quantity" semanticamente
+    @Max(100)
+    private Integer quantity;
 
     @NotNull
     private BeerType type;

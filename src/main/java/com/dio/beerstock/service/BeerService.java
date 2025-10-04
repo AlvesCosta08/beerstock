@@ -1,5 +1,7 @@
 package com.dio.beerstock.service;
 
+
+
 import com.dio.beerstock.dto.BeerDTO;
 import com.dio.beerstock.entity.Beer;
 import com.dio.beerstock.exception.BeerAlreadyRegisteredException;
@@ -38,8 +40,7 @@ public class BeerService {
     }
 
     public BeerDTO findById(Long id) throws BeerNotFoundException {
-        Beer beer = beerRepository.findById(id)
-                .orElseThrow(() -> new BeerNotFoundException(id));
+        Beer beer = verifyIfExists(id);
         return beerMapper.toDTO(beer);
     }
 
@@ -62,7 +63,7 @@ public class BeerService {
         validateStock(beerDTO.getQuantity(), beerDTO.getMax());
 
         Beer beerToUpdate = beerMapper.toModel(beerDTO);
-        beerToUpdate.setId(id); // mantém o ID original
+        beerToUpdate.setId(id);
         Beer updatedBeer = beerRepository.save(beerToUpdate);
         return beerMapper.toDTO(updatedBeer);
     }
