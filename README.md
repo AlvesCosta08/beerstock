@@ -326,7 +326,9 @@ Surefire: target/surefire-reports/
 📐 Padrão Arquitetural
 
 
-```
+``
+
+
 ┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
 │   Controller    │ →  │     Service      │ →  │   Repository     │
 │   (REST API)    │    │  (Business Logic)│    │   (Data Access)  │
@@ -392,7 +394,7 @@ Todos os contribuidores que ajudaram no projeto
 📞 Suporte
 Se você tiver qualquer dúvida ou problema, sinta-se à vontade para:
 
-📧 Email: seu.email@example.com
+📧 Email: alvescosta74@gmail.com
 
 🐛 Issues: GitHub Issues
 
