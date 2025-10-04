@@ -158,7 +158,7 @@ Maven 3.6+
 Git
 
 Clone e Execução
-bash
+
 # 1. Clone o repositório
 git clone https://github.com/seu-usuario/beerstock.git
 cd beerstock
@@ -170,7 +170,7 @@ cd beerstock
 ./mvnw clean package
 java -jar target/beerstock-0.0.1-SNAPSHOT.jar
 Docker (Opcional)
-bash
+
 # Build da imagem Docker
 docker build -t beerstock-api .
 
@@ -179,6 +179,7 @@ docker run -p 8080:8080 beerstock-api
 🔧 Configuração
 Arquivo application.properties
 properties
+
 # Server Configuration
 server.port=8080
 spring.application.name=beerstock-api
@@ -208,10 +209,14 @@ export DB_URL=jdbc:h2:mem:beerstockdb
 export DB_USERNAME=sa
 export DB_PASSWORD=
 📚 API Reference
-Base URL
-text
+
+# Base URL
+
+```
 http://localhost:8080/api/v1
+
 📋 Endpoints Principais
+
 Cervejas (/beers)
 Método	Endpoint	Descrição	Status de Sucesso
 POST	/beers	Criar nova cerveja	201 Created
@@ -222,9 +227,12 @@ PUT	/beers/{id}	Atualizar cerveja	200 OK
 DELETE	/beers/{id}	Deletar cerveja	204 No Content
 PATCH	/beers/{id}/increment	Incrementar estoque	200 OK
 PATCH	/beers/{id}/decrement	Decrementar estoque	200 OK
+
 📝 Exemplos de Uso
 Criar Cerveja
-http
+
+
+
 POST /api/v1/beers
 Content-Type: application/json
 
@@ -246,10 +254,13 @@ json
   "quantity": 50,
   "type": "LAGER"
 }
+
 Incrementar Estoque
-http
+
 PATCH /api/v1/beers/1/increment?quantityToIncrement=10
+
 🔄 Códigos de Status HTTP
+
 Status	Descrição
 200 OK	Requisição bem-sucedida
 201 Created	Recurso criado com sucesso
@@ -257,8 +268,11 @@ Status	Descrição
 400 Bad Request	Dados inválidos ou estoque excedido
 404 Not Found	Cerveja não encontrada
 409 Conflict	Cerveja já cadastrada
+
 🧪 Testes
+
 📊 Estratégia de Testes
+
 A aplicação possui cobertura completa de testes em todas as camadas:
 
 ✅ Testes de Controlador (BeerController)
@@ -283,7 +297,8 @@ Consultas: Buscas por nome, ID e listagens
 Integridade: Validações de constraints
 
 🚀 Executando os Testes
-bash
+
+
 # Executar todos os testes
 ./mvnw test
 
@@ -296,7 +311,10 @@ bash
 ./mvnw test -Dtest=BeerRepositoryTest
 
 # Executar testes de integração
+
 ./mvnw test -Dtest="*IntegrationTest"
+
+
 📈 Relatórios de Cobertura
 Após executar os testes, os relatórios estarão disponíveis em:
 
@@ -306,7 +324,9 @@ Surefire: target/surefire-reports/
 
 🏗️ Arquitetura
 📐 Padrão Arquitetural
-text
+
+
+```
 ┌─────────────────┐    ┌──────────────────┐    ┌──────────────────┐
 │   Controller    │ →  │     Service      │ →  │   Repository     │
 │   (REST API)    │    │  (Business Logic)│    │   (Data Access)  │
@@ -316,6 +336,10 @@ text
 │      DTOs       │    │    Entities      │    │   Database       │
 │ (Data Transfer) │    │  (Domain Model)  │    │    (H2/Prod)     │
 └─────────────────┘    └──────────────────┘    └──────────────────┘
+
+
+
+
 🎯 Camadas da Aplicação
 Controller Layer: Endpoints REST e tratamento de requests
 
